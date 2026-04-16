@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orden de Servicio y Reparación – Taller Pirri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,147 +12,151 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<!-- Toolbar -->
-<div class="toolbar">
-  <button class="btn btn-add-rep"  onclick="addRow('repuestos')">+ Repuesto</button>
-  <button class="btn btn-add-obra" onclick="addRow('mano-obra')">+ Mano de Obra</button>
-  <button class="btn btn-pdf"      onclick="generarPDF()">⬇ Generar PDF</button>
-  <button class="btn btn-clear"    onclick="limpiarForm()">✕ Limpiar</button>
-</div>
-
-<!-- Sheet -->
-<div class="sheet" id="sheet">
-
-  <!-- ── Header ── -->
-  <div class="doc-header">
-    <div class="logo-cell">
-      <img src="logo.jpeg" alt="Logo empresa" onerror="this.style.display='none'" />
-    </div>
-    <div class="title-cell">
-      <h1>Orden de Servicio<br>y Reparación</h1>
-    </div>
-    <div class="order-meta">
-      <div class="order-meta-row">
-        <span class="lbl">Fecha</span>
-        <input type="date" id="meta-fecha" />
-      </div>
-      <div class="order-meta-row">
-        <span class="lbl">Encargado</span>
-        <input type="text" placeholder="Nombre" />
-      </div>
-      <div class="order-meta-row">
-        <span class="lbl">Teléfono</span>
-        <input type="text" placeholder="+502 0000-0000" />
-      </div>
-    </div>
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn btn-add-rep" onclick="addRow('repuestos')">+ Repuesto</button>
+    <button class="btn btn-add-obra" onclick="addRow('mano-obra')">+ Mano de Obra</button>
+    <button class="btn btn-pdf" onclick="generarPDF()">⬇ Generar PDF</button>
+    <button class="btn btn-clear" onclick="limpiarForm()">✕ Limpiar</button>
   </div>
 
-  <!-- ── Info Grid ── -->
-  <div class="info-grid">
+  <!-- Sheet -->
+  <div class="sheet" id="sheet">
 
-    <!-- Row 1: Cliente / Dirección -->
-    <div class="info-row-1">
-      <div class="info-field">
-        <span class="lbl">Cliente</span>
-        <input type="text" placeholder="Nombre completo" />
+    <!-- ── Header ── -->
+    <div class="doc-header">
+      <div class="logo-cell">
+        <img src="logo.jpeg" alt="Logo empresa" onerror="this.style.display='none'" />
       </div>
-      <div class="info-field" style="border-right:none;">
-        <span class="lbl">Dirección</span>
-        <input type="text" placeholder="Dirección completa" />
+      <div class="title-cell">
+        <h1>Orden de Servicio<br>y Reparación</h1>
       </div>
-    </div>
-
-    <!-- Row 2: Marca / Línea / Placa / Año -->
-    <div class="info-row-2">
-      <div class="info-field">
-        <span class="lbl">Marca</span>
-        <input type="text" placeholder="Yamaha" />
-      </div>
-      <div class="info-field">
-        <span class="lbl">Línea</span>
-        <input type="text" placeholder="SZ 150D" />
-      </div>
-      <div class="info-field">
-        <span class="lbl">Placa</span>
-        <input type="text" placeholder="ABC-123" />
-      </div>
-      <div class="info-field" style="border-right:none;">
-        <span class="lbl">Año</span>
-        <input type="text" placeholder="2024" />
+      <div class="order-meta">
+        <div class="order-meta-row">
+          <span class="lbl">Fecha</span>
+          <input type="date" id="meta-fecha" />
+        </div>
+        <div class="order-meta-row">
+          <span class="lbl">Encargado</span>
+          <input type="text" placeholder="Nombre" />
+        </div>
+        <div class="order-meta-row">
+          <span class="lbl">Teléfono</span>
+          <input type="text" placeholder="+502 0000-0000" />
+        </div>
       </div>
     </div>
 
-    <!-- Row 3: Kilometraje actual / Prox. Servicio -->
-    <div class="info-row-3">
-      <div class="info-field">
-        <span class="lbl">Kilometraje actual</span>
-        <input type="text" placeholder="00000" />
+    <!-- ── Info Grid ── -->
+    <div class="info-grid">
+
+      <!-- Row 1: Cliente / Dirección -->
+      <div class="info-row-1">
+        <div class="info-field">
+          <span class="lbl">Cliente</span>
+          <input type="text" placeholder="Nombre completo" />
+        </div>
+        <div class="info-field" style="border-right:none;">
+          <span class="lbl">Dirección</span>
+          <input type="text" placeholder="Dirección completa" />
+        </div>
       </div>
-      <div class="info-field" style="border-right:none;">
-        <span class="lbl">Prox. Servicio</span>
-        <input type="text" placeholder="Fecha o Km" />
+
+      <!-- Row 2: Marca / Línea / Placa / Año -->
+      <div class="info-row-2">
+        <div class="info-field">
+          <span class="lbl">Marca</span>
+          <input type="text" placeholder="Yamaha" />
+        </div>
+        <div class="info-field">
+          <span class="lbl">Línea</span>
+          <input type="text" placeholder="SZ 150D" />
+        </div>
+        <div class="info-field">
+          <span class="lbl">Placa</span>
+          <input type="text" placeholder="ABC-123" />
+        </div>
+        <div class="info-field" style="border-right:none;">
+          <span class="lbl">Año</span>
+          <input type="text" placeholder="2024" />
+        </div>
+      </div>
+
+      <!-- Row 3: Kilometraje actual / Prox. Servicio -->
+      <div class="info-row-3">
+        <div class="info-field">
+          <span class="lbl">Kilometraje actual</span>
+          <input type="text" placeholder="00000" />
+        </div>
+        <div class="info-field" style="border-right:none;">
+          <span class="lbl">Prox. Servicio</span>
+          <input type="text" placeholder="Fecha o Km" />
+        </div>
+      </div>
+
+    </div><!-- /.info-grid -->
+
+    <!-- ── Column Headers ── -->
+    <div class="section-header">
+      <div class="sh">Cantidad</div>
+      <div class="sh">Descripción</div>
+      <div class="sh">Precio U.</div>
+      <div class="sh">Total</div>
+    </div>
+
+    <!-- ── REPUESTOS ── -->
+    <div class="subsection-label">Repuestos</div>
+    <div id="repuestos-body"></div>
+    <div class="subtotal-row">
+      <div></div>
+      <div></div>
+      <div class="st-label">Sub Total</div>
+      <div class="st-val"><span>Q</span><input type="text" id="subtotal-rep" readonly /></div>
+    </div>
+
+    <!-- ── MANO DE OBRA ── -->
+    <div class="subsection-label">Mano de Obra</div>
+    <div id="mano-obra-body"></div>
+    <div class="subtotal-row">
+      <div></div>
+      <div></div>
+      <div class="st-label">Sub Total</div>
+      <div class="st-val"><span>Q</span><input type="text" id="subtotal-obra" readonly /></div>
+    </div>
+
+    <!-- ── Summary ── -->
+    <div class="summary-area">
+      <div class="obs-area">
+        <div class="obs-label">Observaciones</div>
+        <textarea placeholder="Ingrese observaciones relevantes..."></textarea>
+      </div>
+      <div class="totals-panel">
+        <div class="totals-row rep">
+          <span class="t-label">Repuestos</span>
+          <div class="t-val"><span>Q</span><input type="text" id="total-rep-display" readonly /></div>
+        </div>
+        <div class="totals-row obra">
+          <span class="t-label">Mano de Obra</span>
+          <div class="t-val"><span>Q</span><input type="text" id="total-obra-display" readonly /></div>
+        </div>
+        <div class="totals-row total">
+          <span class="t-label">Total General</span>
+          <div class="t-val"><span>Q</span><input type="text" id="total-general" readonly /></div>
+        </div>
       </div>
     </div>
 
-  </div><!-- /.info-grid -->
-
-  <!-- ── Column Headers ── -->
-  <div class="section-header">
-    <div class="sh">Cantidad</div>
-    <div class="sh">Descripción</div>
-    <div class="sh">Precio U.</div>
-    <div class="sh">Total</div>
-  </div>
-
-  <!-- ── REPUESTOS ── -->
-  <div class="subsection-label">Repuestos</div>
-  <div id="repuestos-body"></div>
-  <div class="subtotal-row">
-    <div></div><div></div>
-    <div class="st-label">Sub Total</div>
-    <div class="st-val"><span>Q</span><input type="text" id="subtotal-rep" readonly /></div>
-  </div>
-
-  <!-- ── MANO DE OBRA ── -->
-  <div class="subsection-label">Mano de Obra</div>
-  <div id="mano-obra-body"></div>
-  <div class="subtotal-row">
-    <div></div><div></div>
-    <div class="st-label">Sub Total</div>
-    <div class="st-val"><span>Q</span><input type="text" id="subtotal-obra" readonly /></div>
-  </div>
-
-  <!-- ── Summary ── -->
-  <div class="summary-area">
-    <div class="obs-area">
-      <div class="obs-label">Observaciones</div>
-      <textarea placeholder="Ingrese observaciones relevantes..."></textarea>
+    <div class="footer-message">
+      Gracias por tu preferencia, en <b>Taller de motos Pirri</b> te brindamos un servicio de excelente calidad.
+      <p>¡Vuelve Pronto!</p>
     </div>
-    <div class="totals-panel">
-      <div class="totals-row rep">
-        <span class="t-label">Repuestos</span>
-        <div class="t-val"><span>Q</span><input type="text" id="total-rep-display" readonly /></div>
-      </div>
-      <div class="totals-row obra">
-        <span class="t-label">Mano de Obra</span>
-        <div class="t-val"><span>Q</span><input type="text" id="total-obra-display" readonly /></div>
-      </div>
-      <div class="totals-row total">
-        <span class="t-label">Total General</span>
-        <div class="t-val"><span>Q</span><input type="text" id="total-general" readonly /></div>
-      </div>
-    </div>
-  </div>
 
-  <div class="footer-message">
-    Gracias por tu presencia, en <b>Taller de motos Pirri</b> te brindamos un servicio de excelente calidad.
-    <p>¡Vuelve Pronto!</p>
-  </div>
+  </div><!-- /.sheet -->
 
-</div><!-- /.sheet -->
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>

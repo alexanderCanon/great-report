@@ -384,14 +384,15 @@ let repCounter = 0;
       y += SUM_H;
 
       /* ── Footer ── */
-      sf(WHITE); sd(BORDER); lw(0.4);
-      doc.rect(X, y, CW, 10, 'FD');
-      st(SILVER); doc.setFont('helvetica','normal'); doc.setFontSize(7);
+      const FOOTER_H = 14;
+      sf(YELLOW); sd(BORDER); lw(0.4);
+      doc.rect(X, y, CW, FOOTER_H, 'FD');
+      st(INK); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
       doc.text(
-        'Gracias por tu presencia, en Taller de motos Pirri te brindamos un servicio de excelente calidad. ¡Vuelve Pronto!',
+        'Gracias por tu preferencia, en Taller de motos Pirri te brindamos un servicio de excelente calidad.\n¡Vuelve Pronto!',
         X + CW/2, y + 6, { align:'center', maxWidth: CW - 4 }
       );
-      y += 10;
+      y += FOOTER_H;
 
       /* ── Borde exterior ── */
       sd(BORDER); lw(0.7);
